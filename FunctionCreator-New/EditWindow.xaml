@@ -1,0 +1,362 @@
+﻿<Controls:MetroWindow x:Name="window_edit" x:Class="FunctionCreator_New.EditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:AvalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Edit" Height="400" Width="500" BorderBrush="Aqua" WindowState="Maximized">
+    <Grid>
+        <Menu x:Name="menu_tools" HorizontalAlignment="Stretch" Height="40" VerticalAlignment="Top">
+            <MenuItem Header="ファイル(_F)">
+                <MenuItem Header="新規保存" Click="New_Click"/>
+                <MenuItem x:Name="mi_overwrite" Header="上書き保存" IsEnabled="False" Click="Overwrite_Click"/>
+            </MenuItem>
+            <MenuItem Header="コード(_C)">
+                <MenuItem Header="ModBE">
+                    <MenuItem Header="Methods">
+                        <MenuItem x:Name="mi_global" Header="Global">
+                            <MenuItem Header="addItemInventory" ToolTip="addItemInventory(int id, [int amount, int damage])&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="clientMessage" ToolTip="clientMessage(string message)&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="explode" ToolTip="explode(double x, double y, double z, double power, [double onfire])&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="getCarriedItem" ToolTip="getCarriedItem()&#xd;&#xa;return: int" Click="Global_Click"/>
+                            <MenuItem Header="getLevel" ToolTip="getLevel()&#xd;&#xa;return: int(?)" Click="Global_Click"/>
+                            <MenuItem Header="getPitch" ToolTip="getPitch([Number entityuuid])&#xd;&#xa;return: double" Click="Global_Click"/>
+                            <MenuItem Header="getPlayerEnt" ToolTip="getPlayerEnt()&#xd;&#xa;return: JavaObject" Click="Global_Click"/>
+                            <MenuItem Header="getPlayerX" ToolTip="getPlayerX()&#xd;&#xa;return: double" Click="Global_Click"/>
+                            <MenuItem Header="getPlayerY" ToolTip="getPlayerY()&#xd;&#xa;return: double" Click="Global_Click"/>
+                            <MenuItem Header="getPlayerZ" ToolTip="getPlayerZ()&#xd;&#xa;return: double" Click="Global_Click"/>
+                            <MenuItem Header="getTile" ToolTip="getTile(int x, int y, int z)&#xd;&#xa;return: int" Click="Global_Click"/>
+                            <MenuItem Header="getYaw" ToolTip="getYaw([Number entityuuid])&#xd;&#xa;return: double" Click="Global_Click"/>
+                            <MenuItem Header="preventDefault" ToolTip="preventDefault()&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="print" ToolTip="print(string message)&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="rideAnimal" ToolTip="rideAnimal(Number riderentityuuid, Number vehicleentityuuid)&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="setNightMode" ToolTip="setNightMode(boolean setnightmode)&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="setPosition" ToolTip="setPosition(object entityuuid, double x, double y, double z)&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="setPositionRelative" ToolTip="setPositionRelative(object entityuuid, double x, double y, double z)&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="setRot" ToolTip="setRot(Number entityuuid, double yaw, [double pitch])&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="setTile" ToolTip="setTile(int x, int y, int z, [int id, int damage])&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="setVelX" ToolTip="setVelX(Number entityuuid, double velocity)&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="setVelY" ToolTip="setVelY(Number entityuuid, double velocity)&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="setVelZ" ToolTip="setVelZ(Number entityuuid, double velocity)&#xd;&#xa;return: void" Click="Global_Click"/>
+                            <MenuItem Header="spawnChicken" ToolTip="spawnChicken(double x, double y, double z, [string skin])&#xd;&#xa;return: object" Click="Global_Click"/>
+                            <MenuItem Header="spawnCow" ToolTip="spawnCow(double x, double y, double z, [string skin])&#xd;&#xa;return: object" Click="Global_Click"/>
+                            <MenuItem Header="spawnPigZombie" ToolTip="spawnPigZombie(double x, double y, double z, [int id, string skin])&#xd;&#xa;return: object" Click="Global_Click"/>
+                        </MenuItem>
+
+                        <MenuItem x:Name="mi_modpe" Header="ModPE">
+                            <MenuItem Header="dumpVtable" ToolTip="MpdPE&#xd;&#xa;dumpVtable(string classname, int size)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="getBytesFromTexturePack" ToolTip="ModPE&#xd;&#xa;getBytesFromTexturePack(string path)&#xd;&#xa;return: JavaArray" Click="ModPE_Click"/>
+                            <MenuItem Header="getLanguage" ToolTip="ModPE&#xd;&#xa;getLanguage()&#xd;&#xa;return: string" Click="ModPE_Click"/>
+                            <MenuItem Header="getMinecraftVersion" ToolTip="ModPE&#xd;&#xa;getMinecraftVersion()&#xd;&#xa;return: string" Click="ModPE_Click"/>
+                            <MenuItem Header="langEdit" ToolTip="ModPE&#xd;&#xa;langEdit(string original, string new)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="leaveGame" ToolTip="ModPE&#xd;&#xa;leaveGame()&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="log" ToolTip="ModPE&#xd;&#xa;log(string msg)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="openInputStreamFromTexturePack" ToolTip="ModPE&#xd;&#xa;openInputStreamFromTexturePack(string path)&#xd;&#xa;return: JavaObject" Click="ModPE_Click"/>
+                            <MenuItem Header="overrideTexture" ToolTip="ModPE&#xd;&#xa;overrideTexture(string original, string new)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="readData" ToolTip="ModPE&#xd;&#xa;readData(string key)&#xd;&#xa;return: string" Click="ModPE_Click"/>
+                            <MenuItem Header="removeData" ToolTip="ModPE&#xd;&#xa;removeData(string key)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="resetFov" ToolTip="ModPE&#xd;&#xa;resetFov()&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="saveData" ToolTip="ModPE&#xd;&#xa;saveData(string key, string data)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="selectLevel" ToolTip="ModPE&#xd;&#xa;selectLevel(string level_path)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="selectCamera" ToolTip="ModPE&#xd;&#xa;selectCamera(Number uuid)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="setFoodItem" ToolTip="ModPE&#xd;&#xa;setFoodItem(int id, string texture_name, [int texture_group, int saturation, string item_name, int stack_limit])&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="setFov" ToolTip="ModPE&#xd;&#xa;setFov(double outlook)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="setGameSpeed" ToolTip="ModPE&#xd;&#xa;setGameSpeed(double tick_par_second)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="setGuiBlocks" ToolTip="ModPE&#xd;&#xa;setGuiBlocks(string directory_path)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="setItem" ToolTip="ModPE&#xd;&#xa;setItem(int id, string texture_name, [int texture_group, string item_name, int stack_limit])&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="setItems" ToolTip="ModPE&#xd;&#xa;setItems(string directory_path)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="setTerrain" ToolTip="ModPE&#xd;&#xa;setTerrain(string directory_path)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="setUiRenderDebug" ToolTip="ModPE&#xd;&#xa;setUiRenderDebug([boolean debugmode])&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="showTipMessage" ToolTip="ModPE&#xd;&#xa;showTipMessage(string message)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                            <MenuItem Header="takeScreenshot" ToolTip="ModPE&#xd;&#xa;takeScreenshot(string str)&#xd;&#xa;return: void" Click="ModPE_Click"/>
+                        </MenuItem>
+
+                        <MenuItem x:Name="mi_level" Header="Level">
+                            <MenuItem Header="addParticle" ToolTip="Level&#xd;&#xa;addParticle(int id, double start_x, double start_y, double start_z, [double vel_x, double vel_y, double vel_z, int size])&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="biomeIdToName" ToolTip="Level&#xd;&#xa;biomeIdToName(int id)&#xd;&#xa;return: string" Click="Level_Click"/>
+                            <MenuItem Header="canSeeSky" ToolTip="Level&#xd;&#xa;canSeeSky(int x, int y, int z)&#xd;&#xa;return: boolean" Click="Level_Click"/>
+                            <MenuItem Header="destroyBlock" ToolTip="Level&#xd;&#xa;destroyBlock(int x, int y, int z, boolean allow_drop)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="dropItem" ToolTip="Level&#xd;&#xa;dropItem(double x, double y, double z, double bound, int id, [int amount, int damage])&#xd;&#xa;return: JavaObject" Click="Level_Click"/>
+                            <MenuItem Header="getAddress" ToolTip="Level&#xd;&#xa;getAddress()&#xd;&#xa;return: NativePointer" Click="Level_Click"/>
+                            <MenuItem Header="getBiome" ToolTip="Level&#xd;&#xa;getBiome(int x, int z)&#xd;&#xa;return: int" Click="Level_Click"/>
+                            <MenuItem Header="getBiomeName" ToolTip="Level&#xd;&#xa;getBiomeName(int x, int z)&#xd;&#xa;return: string" Click="Level_Click"/>
+                            <MenuItem Header="getBrightness" ToolTip="Level&#xd;&#xa;getBrightness(int x, int y, int z)&#xd;&#xa;return: int" Click="Level_Click"/>
+                            <MenuItem Header="getChestSlot" ToolTip="Level&#xd;&#xa;getChestSlot(int x, int y, int z, int slot)&#xd;&#xa;return: int" Click="Level_Click"/>
+                            <MenuItem Header="getChestSlotCount" ToolTip="Level&#xd;&#xa;getChestSlotCount(int x, int y, int z, int slot)&#xd;&#xa;return: int" Click="Level_Click"/>
+                            <MenuItem Header="getChestSlotCustomName" ToolTip="Level&#xd;&#xa;getChestSlotCustomName(int x, int y, int z, int slot)&#xd;&#xa;return: string" Click="Level_Click"/>
+                            <MenuItem Header="getChestSlotData" ToolTip="Level&#xd;&#xa;getChestSlotData(int x, int y, int z, int slot)&#xd;&#xa;return: int" Click="Level_Click"/>
+                            <MenuItem Header="getData" ToolTip="Level&#xd;&#xa;getData(int x, int y, int z)&#xd;&#xa;return: int" Click="Level_Click"/>
+                            <MenuItem Header="getDifficulty" ToolTip="Level&#xd;&#xa;getDifficulty()&#xd;&#xa;return: int" Click="Level_Click"/>
+                            <MenuItem Header="getFurnaceSlot" ToolTip="Level&#xd;&#xa;getFurnaceSlot(int x, int y, int z, int slot)&#xd;&#xa;return: int" Click="Level_Click"/>
+                            <MenuItem Header="getFurnaceSlotCount" ToolTip="Level&#xd;&#xa;getFurnaceSlotCount(int x, int y, int z, int slot)&#xd;&#xa;return: int" Click="Level_Click"/>
+                            <MenuItem Header="getFurnaceSlotData" ToolTip="Level&#xd;&#xa;getFurnaceSlotData(int x, int y, int z, int slot)&#xd;&#xa;return: int" Click="Level_Click"/>
+                            <MenuItem Header="getGameMode" ToolTip="Level&#xd;&#xa;getGameMode()&#xd;&#xa;return: int" Click="Level_Click"/>
+                            <MenuItem Header="getGrassColor" ToolTip="Level&#xd;&#xa;getGrassColor(int x, int z)&#xd;&#xa;return: Number" Click="Level_Click"/>
+                            <MenuItem Header="getLightningLevel" ToolTip="Level&#xd;&#xa;getLightningLevel()&#xd;&#xa;return: double" Click="Level_Click"/>
+                            <MenuItem Header="getRainLevel" ToolTip="Level&#xd;&#xa;getRainLevel()&#xd;&#xa;return: double" Click="Level_Click"/>
+                            <MenuItem Header="getSignText" ToolTip="Level&#xd;&#xa;getSignText(int x, int y, int z, int line)&#xd;&#xa;return: string" Click="Level_Click"/>
+                            <MenuItem Header="getSpawnerEntityType" ToolTip="Level&#xd;&#xa;getSpawnerEntityType(int x, int y, int z)&#xd;&#xa;return: int" Click="Level_Click"/>
+                            <MenuItem Header="getTile" ToolTip="Level&#xd;&#xa;getTile(int x, int y, int z)&#xd;&#xa;return: int" Click="Level_Click"/>
+                            <MenuItem Header="getTime" ToolTip="Level&#xd;&#xa;getTime()&#xd;&#xa;return: Number" Click="Level_Click"/>
+                            <MenuItem Header="getWorldDir" ToolTip="Level&#xd;&#xa;getWorldDir()&#xd;&#xa;return: string" Click="Level_Click"/>
+                            <MenuItem Header="getWorldName" ToolTip="Level&#xd;&#xa;getWorldName()&#xd;&#xa;return: string" Click="Level_Click"/>
+                            <MenuItem Header="playSound" ToolTip="Level&#xd;&#xa;playSound(double x, double y, double z, string sound, double volume, [double pitch])&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="playSoundEnt" ToolTip="Level&#xd;&#xa;playSoundEnt(object uuid, string sound, double volume, [double pitch])&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setDifficulty" ToolTip="Level&#xd;&#xa;setDifficulty(int difficulty)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setChestSlot" ToolTip="Level&#xd;&#xa;setChestSlot(int x, int y, int z, int slot, int id, int damage, int amount)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setChestSlotCustomName" ToolTip="Level&#xd;&#xa;setChestSlotCustomName(int x, int y, int z, int slot, string customname)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setFurnaceSlot" ToolTip="Level&#xd;&#xa;setFurnaceSlot(int x, int y, int z, int slot, int id, int damage, int amount)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setGameMode" ToolTip="Level&#xd;&#xa;setGameMode(int game_mode)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setGrassColor" ToolTip="Level&#xd;&#xa;setGrassColor(int x, int z, int color)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setLightningLevel" ToolTip="Level&#xd;&#xa;setLightningLevel(double level)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setNightMode" ToolTip="Level&#xd;&#xa;setNightMode(boolean setnightmode)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setRainLevel" ToolTip="Level&#xd;&#xa;setRainLevel(double level)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setSignText" ToolTip="Level&#xd;&#xa;setSignText(int x, int y, int z, int line, string message)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setSpawn" ToolTip="Level&#xd;&#xa;setSpawn(int x, int y, int z)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setSpawnerEntityType" ToolTip="Level&#xd;&#xa;setSpawnerEntityType(int x, int y, int z, int entity_type_id)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setTile" ToolTip="Level&#xd;&#xa;setTile(int x, int y, int z, [int id, int damage])&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="setTime" ToolTip="Level&#xd;&#xa;setTime(int time)&#xd;&#xa;return: void" Click="Level_Click"/>
+                            <MenuItem Header="spawnChicken" ToolTip="Level&#xd;&#xa;spawnChicken(double x, double y, double z, [string skin])&#xd;&#xa;return: object" Click="Level_Click"/>
+                            <MenuItem Header="spawnCow" ToolTip="Level&#xd;&#xa;spawnCow(double x, double y, double z, [string skin])&#xd;&#xa;return: object" Click="Level_Click"/>
+                            <MenuItem Header="spawnMob" ToolTip="Level&#xd;&#xa;spawnMob(double x, double y, double z, int entitytypeid, [string texture])&#xd;&#xa;return: object" Click="Level_Click"/>
+                        </MenuItem>
+
+                        <MenuItem x:Name="mi_player" Header="Player">
+                            <MenuItem Header="addExp" ToolTip="Player&#xd;&#xa;addExp(int exp)&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="addItemCreativeInv" ToolTip="Player&#xd;&#xa;addItemCreativeInv(int id, [int amount, int damage])&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="addItemInventory" ToolTip="Player&#xd;&#xa;addItemInventory(int id, [int amount, int damage])&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="canFly" ToolTip="Player&#xd;&#xa;canFly()&#xd;&#xa;return: boolean" Click="Player_Click"/>
+                            <MenuItem Header="clearInventorySlot" ToolTip="Player&#xd;&#xa;clearInventorySlot(int slot)&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="enchant" ToolTip="Player&#xd;&#xa;ehchant(int slot, int enchantment, int level)&#xd;&#xa;return: boolean" Click="Player_Click"/>
+                            <MenuItem Header="getArmorSlot" ToolTip="Player&#xd;&#xa;getArmorSlot(int slot)&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getArmorSlotDamage" ToolTip="Player&#xd;&#xa;getArmorSlotDamage(int slot)&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getCarriedItem" ToolTip="Player&#xd;&#xa;getCarriedItem()&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getCarriedItemCount" ToolTip="Player&#xd;&#xa;getCarriedItemCount()&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getCarriedItemDamage" ToolTip="Player&#xd;&#xa;getCarriedItemDamage()&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getDimension" ToolTip="Player&#xd;&#xa;getDimension()&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getEnchantments" ToolTip="Player&#xd;&#xa;getEnchantments(int slot)&#xd;&#xa;return: JavaArray" Click="Player_Click"/>
+                            <MenuItem Header="getEntity" ToolTip="Player&#xd;&#xa;getEntity()&#xd;&#xa;return: JavaObject" Click="Player_Click"/>
+                            <MenuItem Header="getExhaustion" ToolTip="Player&#xd;&#xa;getExhaustion()&#xd;&#xa;return: double" Click="Player_Click"/>
+                            <MenuItem Header="getExp" ToolTip="Player&#xd;&#xa;getExp()&#xd;&#xa;return: double" Click="Player_Click"/>
+                            <MenuItem Header="getHunger" ToolTip="Player&#xd;&#xa;getHunger()&#xd;&#xa;return: double" Click="Player_Click"/>
+                            <MenuItem Header="getInventorySlot" ToolTip="Player&#xd;&#xa;getInventorySlot(int slot)&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getInventorySlotCount" ToolTip="Player&#xd;&#xa;getInventorySlotCount(int slot)&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getInventorySlotData" ToolTip="Player&#xd;&#xa;getInventorySlotData(int slot)&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getItemCustomName" ToolTip="Player&#xd;&#xa;getItemCustomName(int slot)&#xd;&#xa;return: string" Click="Player_Click"/>
+                            <MenuItem Header="getLevel" ToolTip="Player&#xd;&#xa;getLevel()&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getName" ToolTip="Player&#xd;&#xa;getName(object uuid)&#xd;&#xa;return: string" Click="Player_Click"/>
+                            <MenuItem Header="getPointedBlockData" ToolTip="Player&#xd;&#xa;getPointedBlockData()&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getPointedBlockId" ToolTip="Player&#xd;&#xa;getPointedBlockId()&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getPointedBlockSide" ToolTip="Player&#xd;&#xa;getPointedBlockSide()&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getPointedBlockX" ToolTip="Player&#xd;&#xa;getPointedBlockX()&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getPointedBlockY" ToolTip="Player&#xd;&#xa;getPointedBlockY()&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getPointedBlockZ" ToolTip="Player&#xd;&#xa;getPointedBlockZ()&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getPointedEntity" ToolTip="Player&#xd;&#xa;getPointedEntity()&#xd;&#xa;return: JavaObject" Click="Player_Click"/>
+                            <MenuItem Header="getPointedVecX" ToolTip="Player&#xd;&#xa;getPointedVecX()&#xd;&#xa;return: float" Click="Player_Click"/>
+                            <MenuItem Header="getPointedVecY" ToolTip="Player&#xd;&#xa;getPointedVecY()&#xd;&#xa;return: float" Click="Player_Click"/>
+                            <MenuItem Header="getPointedVecZ" ToolTip="Player&#xd;&#xa;getPointedVecZ()&#xd;&#xa;return: float" Click="Player_Click"/>
+                            <MenuItem Header="getSaturation" ToolTip="Player&#xd;&#xa;getSaturation()&#xd;&#xa;return: double" Click="Player_Click"/>
+                            <MenuItem Header="getScore" ToolTip="Player&#xd;&#xa;getScore()&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getSelectedSlotId" ToolTip="Player&#xd;&#xa;getSelectedSlotId()&#xd;&#xa;return: int" Click="Player_Click"/>
+                            <MenuItem Header="getX" ToolTip="Player&#xd;&#xa;getX()&#xd;&#xa;return: double" Click="Player_Click"/>
+                            <MenuItem Header="getY" ToolTip="Player&#xd;&#xa;getY()&#xd;&#xa;return: double" Click="Player_Click"/>
+                            <MenuItem Header="getZ" ToolTip="Player&#xd;&#xa;getZ()&#xd;&#xa;return: double" Click="Player_Click"/>
+                            <MenuItem Header="isFlying" ToolTip="Player&#xd;&#xa;isFlying()&#xd;&#xa;return: boolean" Click="Player_Click"/>
+                            <MenuItem Header="isPlayer" ToolTip="Player&#xd;&#xa;isPlayer(Number uuid)&#xd;&#xa;return: boolean" Click="Player_Click"/>
+                            <MenuItem Header="setArmorSlot" ToolTip="Player&#xd;&#xa;setArmorSlot(int slot, [int id, int damage])&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="setCanFly" ToolTip="Player&#xd;&#xa;setCanFly(boolean fly)&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="setExhaustion" ToolTip="Player&#xd;&#xa;setExhaustion(double exhaustion)&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="setExp" ToolTip="Player&#xd;&#xa;setExp(double exp)&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="setFlying" ToolTip="Player&#xd;&#xa;setFlying(boolean fly)&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="setHealth" ToolTip="Player&#xd;&#xa;setHealth(int health)&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="setHunger" ToolTip="Player&#xd;&#xa;setHunger(double hunger)&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="setInventorySlot" ToolTip="Player&#xd;&#xa;setInventorySlot(int slot, int id, int amount, int damage)&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="setItemCustomName" ToolTip="Player&#xd;&#xa;setItemCustomName(int slot, string customname)&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="setLevel" ToolTip="Player&#xd;&#xa;setLevel(int level)&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="setSaturation" ToolTip="Player&#xd;&#xa;setSaturation(double saturation)&#xd;&#xa;return: void" Click="Player_Click"/>
+                            <MenuItem Header="setSelectedSlotId" ToolTip="Player&#xd;&#xa;setSelectedSlotId(int slot)&#xd;&#xa;return: void" Click="Player_Click"/>
+                        </MenuItem>
+
+                        <MenuItem x:Name="mi_entity" Header="Entity">
+                            <MenuItem Header="addEffect" ToolTip="Entity&#xd;&#xa;addEffect(Number uuid, int effect_id, int effect_time, int effect_level, boolean ambient, boolean show_particle)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="getAll" ToolTip="Entity&#xd;&#xa;getAll()&#xd;&#xa;return: JavaArray" Click="Entity_Click"/>
+                            <MenuItem Header="getAnimalAge" ToolTip="Entity&#xd;&#xa;getAnimalAge(Number uuid)&#xd;&#xa;return: int" Click="Entity_Click"/>
+                            <MenuItem Header="getArmor" ToolTip="Entity&#xd;&#xa;getArmor(Number uuid, int slot)&#xd;&#xa;return: int" Click="Entity_Click"/>
+                            <MenuItem Header="getArmorCustomName" ToolTip="Entity&#xd;&#xa;getArmorCustomName(Number entityuuid, int slot)&#xd;&#xa;return: string" Click="Entity_Click"/>
+                            <MenuItem Header="getArmorDamage" ToolTip="Entity&#xd;&#xa;getArmorDamage(Number uuid, int slot)&#xd;&#xa;return: int" Click="Entity_Click"/>
+                            <MenuItem Header="getEntityTypeId" ToolTip="Entity&#xd;&#xa;getEntityTypeId(Number uuid)&#xd;&#xa;return: int" Click="Entity_Click"/>
+                            <MenuItem Header="getExtraData" ToolTip="Entity&#xd;&#xa;getExtraData(object uuid, string key)&#xd;&#xa;return: string" Click="Entity_Click"/>
+                            <MenuItem Header="getHealth" ToolTip="Entity&#xd;&#xa;getHealth(Number uuid)&#xd;&#xa;return: int" Click="Entity_Click"/>
+                            <MenuItem Header="getItemEntityCount" ToolTip="Entity&#xd;&#xa;getItemEntityCount(Number uuid)&#xd;&#xa;return: int" Click="Entity_Click"/>
+                            <MenuItem Header="getItemEntityData" ToolTip="Entity&#xd;&#xa;getItemEntityData(Number uuid)&#xd;&#xa;return: int" Click="Entity_Click"/>
+                            <MenuItem Header="getItemEntityId" ToolTip="Entity&#xd;&#xa;getItemEntityData(Number uuid)&#xd;&#xa;return: int" Click="Entity_Click"/>
+                            <MenuItem Header="getMaxHealth" ToolTip="Entity&#xd;&#xa;getMaxHealth(Number uuid)&#xd;&#xa;return: int" Click="Entity_Click"/>
+                            <MenuItem Header="getMobSkin" ToolTip="Entity&#xd;&#xa;getMobSkin(Number uuid)&#xd;&#xa;return: string" Click="Entity_Click"/>
+                            <MenuItem Header="getNameTag" ToolTip="Entity&#xd;&#xa;getNameTag(Number uuid)&#xd;&#xa;return: string" Click="Entity_Click"/>
+                            <MenuItem Header="getPitch" ToolTip="Entity&#xd;&#xa;getPitch(Number entityuuid)&#xd;&#xa;return: double" Click="Entity_Click"/>
+                            <MenuItem Header="getYaw" ToolTip="Entity&#xd;&#xa;getYaw(Number entityuuid)&#xd;&#xa;return: double" Click="Entity_Click"/>
+                            <MenuItem Header="getRenderType" ToolTip="Entity&#xd;&#xa;getRenderType(Number uuid)&#xd;&#xa;return: int" Click="Entity_Click"/>
+                            <MenuItem Header="getRider" ToolTip="Entity&#xd;&#xa;getRider(Number uuid)&#xd;&#xa;return: Number" Click="Entity_Click"/>
+                            <MenuItem Header="getRiding" ToolTip="Entity&#xd;&#xa;getRiding(Number uuid)&#xd;&#xa;return: Number" Click="Entity_Click"/>
+                            <MenuItem Header="getTarget" ToolTip="Entity&#xd;&#xa;getTarget(Number entityuuid)&#xd;&#xa;return: JavaObject" Click="Entity_Click"/>
+                            <MenuItem Header="getUniqueId" ToolTip="Entity&#xd;&#xa;getUniqueId(object uuid)&#xd;&#xa;return: string" Click="Entity_Click"/>
+                            <MenuItem Header="getVelX" ToolTip="Entity&#xd;&#xa;getVelX(Number uuid)&#xd;&#xa;return: double" Click="Entity_Click"/>
+                            <MenuItem Header="getVelY" ToolTip="Entity&#xd;&#xa;getVelY(Number uuid)&#xd;&#xa;return: double" Click="Entity_Click"/>
+                            <MenuItem Header="getVelZ" ToolTip="Entity&#xd;&#xa;getVelZ(Number uuid)&#xd;&#xa;return: double" Click="Entity_Click"/>
+                            <MenuItem Header="getX" ToolTip="Entity&#xd;&#xa;getX(Number uuid)&#xd;&#xa;return: double" Click="Entity_Click"/>
+                            <MenuItem Header="getY" ToolTip="Entity&#xd;&#xa;getY(Number uuid)&#xd;&#xa;return: double" Click="Entity_Click"/>
+                            <MenuItem Header="getZ" ToolTip="Entity&#xd;&#xa;getZ(Number uuid)&#xd;&#xa;return: double" Click="Entity_Click"/>
+                            <MenuItem Header="isSneaking" ToolTip="Entity&#xd;&#xa;isSneaking(Number uuid)&#xd;&#xa;return: boolean" Click="Entity_Click"/>
+                            <MenuItem Header="remove" ToolTip="Entity&#xd;&#xa;remove(Number uuid)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="removeAllEffects" ToolTip="Entity&#xd;&#xa;removeAllEffects(Number uuid)&#xd;&xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="removeEffect" ToolTip="Entity&#xd;&#xa;removeEffect(Number uuid, int effect_id)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="rideAnimal" ToolTip="Entity&#xd;&#xa;rideAnimal(Number riderentityuuid, Number vehicleentityuuid)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setAnimalAge" ToolTip="Entity&#xd;&#xa;setAnimalAge(Number uuid, int age)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setArmor" ToolTip="Entity&#xd;&#xa;setArmor(Number uuid, int slot, [int id, int damage])&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setArmorCustomName" ToolTip="Entity&#xd;&#xa;setArmorCustomName(Number entityuuid, int slot, string customname)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setCape" ToolTip="Entity&#xd;&#xa;setCape(Number uuid, string skin_path)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setCarriedItem" ToolTip="Entity&#xd;&#xa;setCarriedItem(Number uuid, [int id, int amount, int damage])&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setCollisionSize" ToolTip="Entity&#xd;&#xa;setCollisionSize(Number uuid, double width, double height)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setExtraData" ToolTip="Entity&#xd;&#xa;setExtraData(object uuid, string key, string data)&#xd;&#xa;return: boolean" Click="Entity_Click"/>
+                            <MenuItem Header="setFireTicks" ToolTip="Entity&#xd;&#xa;setFireTicks(Number uuid, int tick)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setHealth" ToolTip="Entity&#xd;&#xa;setHealth(Number uuid, [int health])&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setImmobile" ToolTip="Entity&#xd;&#xa;setImmobile(Number entityuuid, [boolean immobile])&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setMaxHealth" ToolTip="Entity&#xd;&#xa;setMaxHealth(Number uuid, [int max_health])&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setMobSkin" ToolTip="Entity&#xd;&#xa;setMobSkin(Number uuid, string skin_path)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setNameTag" ToolTip="Entity&#xd;&#xa;setNameTag(Number uuid, [string name])&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setPosition" ToolTip="Entity&#xd;&#xa;setPosition(object entityuuid, double x, double y, double z)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setPositionRelative" ToolTip="Entity&#xd;&#xa;setPositionRelative(object uuid, double x, double y, double z)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setRenderType" ToolTip="Entity&#xd;&#xa;setRenderType(Number uuid, int render_id)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setRot" ToolTip="Entity&#xd;&#xa;setRot(Number entity, double yaw, [double pitch])&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setSneaking" ToolTip="Entity&#xd;&#xa;setSneaking(Number uuid, boolean set_sneaking)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setTarget" ToolTip="Entity&#xd;&#xa;setTarget(Number entityuuid1, Number entityuuid2)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setVelX" ToolTip="Entity&#xd;&#xa;setVelX(Number entityuuid, double velocity)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setVelY" ToolTip="Entity&#xd;&#xa;setVelY(Number entityuuid, double velocity)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="setVelZ" ToolTip="Entity&#xd;&#xa;setVelZ(Number entityuuid, double velocity)&#xd;&#xa;return: void" Click="Entity_Click"/>
+                            <MenuItem Header="spawnMob" ToolTip="Entity&#xd;&#xa;spawnMob(double x, double y, double z, int entitytypeid, [string texture])&#xd;&#xa;return: object" Click="Entity_Click"/>
+                        </MenuItem>
+
+                        <MenuItem x:Name="mi_item" Header="Item">
+                            <MenuItem Header="addCraftRecipe" ToolTip="Item&#xd;&#xa;addCraftRecipe(int id, int amount, int damage, array recipe_array)&#xd;&#xa;return: void" Click="Item_Click"/>
+                            <MenuItem Header="addFurnaceRecipe" ToolTip="Item&#xd;&#xa;addFurnaceRecipe(int material_id, int product_id, int product_damage)&#xd;&#xa;return: void" Click="Item_Click"/>
+                            <MenuItem Header="addShapedRecipe" ToolTip="Item&#xd;&#xa;addShapedRecipe(int id, int amount, int damage, array recipeArray, array keyarray)&#xd;&#xa;return: void" Click="Item_Click"/>
+                            <MenuItem Header="defineArmor" ToolTip="Item&#xd;&#xa;defineArmor(int id, string item_texture_name, int source_id, string item_name, string using_texture_path, int defense_points, int max_damage, int armor_type_id)&#xd;&#xa;return: void" Click="Item_Click"/>
+                            <MenuItem Header="defineThrowable" ToolTip="Item&#xd;&#xa;defineThrowable(int id, string texturename, int texturegroup, string itemname, [int stacklimit])&#xd;&#xa;return: void" Click="Item_Click"/>
+                            <MenuItem Header="getCustomThrowableRenderType" ToolTip="Item&#xd;&#xa;getCustomThrowableRenderType(int id)&#xd;&#xa;return: int" Click="Item_Click"/>
+                            <MenuItem Header="getMaxDamaage" ToolTip="Item&#xd;&#xa;getMaxDamage(int id)&#xd;&#xa;return: int" Click="Item_Click"/>
+                            <MenuItem Header="getMaxStackSize" ToolTip="Item&#xd;&#xa;getMaxStackSize([int id])&#xd;&#xa;return: int" Click="Item_Click"/>
+                            <MenuItem Header="getName" ToolTip="Item&#xd;&#xa;getName(int id, [int damage, boolean bool])&#xd;&#xa;return: string" Click="Item_Click"/>
+                            <MenuItem Header="getTextureCoords" ToolTip="Item&#xd;&#xa;getTextureCoords(int id, int damage)&#xd;&#xa;return: JavaArray" Click="Item_Click"/>
+                            <MenuItem Header="getUseAnimation" ToolTip="Item&#xd;&#xa;getUserAnimation(int id)&#xd;&#xa;return: int" Click="Item_Click"/>
+                            <MenuItem Header="internalNameToId" ToolTip="Item&#xd;&#xa;translatedNameToId(string itemname)&#xd;&#xa;return: Number" Click="Item_Click"/>
+                            <MenuItem Header="isValidItem" ToolTip="Item&#xd;&#xa;isValidItem(int id)&#xd;&#xa;return: boolean" Click="Item_Click"/>
+                            <MenuItem Header="setCategory" ToolTip="Item&#xd;&#xa;setCategory(int id, int category)&#xd;&#xa;return; void" Click="Item_Click"/>
+                            <MenuItem Header="setEnchantType" ToolTip="Item&#xd;&#xa;setEnchantType(int id, int type, boolean bool)&#xd;&#xa;return: void" Click="Item_Click"/>
+                            <MenuItem Header="setHandEquipped" ToolTip="Item&#xd;&#xa;setHandEquipped(int id, int bool)&#xd;&#xa;return: void" Click="Item_Click"/>
+                            <MenuItem Header="setMaxDamage" ToolTip="Item&#xd;&#xa;setMaxDamage(int id, int max_damage)&#xd;&#xa;return: void" Click="Item_Click"/>
+                            <MenuItem Header="setProperties" ToolTip="Item&#xd;&#xa;setProperties(int id, object json_properties)&#xd;&#xa;return: void" Click="Item_Click"/>
+                            <MenuItem Header="setStackedByData" ToolTip="Item&#xd;&#xa;setStackedByData(int id, boolean bool)&#xd;&#xa;return: void" Click="Item_Click"/>
+                            <MenuItem Header="setUseAnimation" ToolTip="Item&#xd;&#xa;setUseAnimation(int id, int type)&#xd;&#xa;return: void" Click="Item_Click"/>
+                            <MenuItem Header="translatedNameToId" ToolTip="Item&#xd;&#xa;translatedNameToId(string itemname)&#xd;&#xa;return: Number" Click="Item_Click"/>
+                        </MenuItem>
+
+                        <MenuItem x:Name="mi_block" Header="Block">
+                            <MenuItem Header="defineBlock" ToolTip="Block&#xd;&#xa;defineBlock(int id, string block_name, array texture_array, int material_source_id, object opaque, int render_type)&#xd;&#xa;return: void" Click="Block_Click"/>
+                            <MenuItem Header="defineLiquidBlock" ToolTip="Block&#xd;&#xa;defineLiquidBlock(int id, string liquid_name, array texture_array, int render_type)&#xd;&#xa;return: int" Click="Block_Click"/>
+                            <MenuItem Header="getAllBlockIds" ToolTip="Block&#xd;&#xa;getAllBlockIds()&#xd;&#xa;return: JavaArray" Click="Block_Click"/>
+                            <MenuItem Header="getDestroyTime" ToolTip="Block&#xd;&#xa;getDestroyTime(int id, [int par2int])&#xd;&#xa;return: Number(double?)" Click="Block_Click"/>
+                            <MenuItem Header="getFriction" ToolTip="Block&#xd;&#xa;getFriction(int id, int [par2int])&#xd;&#xa;return: double" Click="Block_Click"/>
+                            <MenuItem Header="getRenderType" ToolTip="Block&#xd;%#xa;getRenderType(int id)&#xd;&#xa;return: int" Click="Block_Click"/>
+                            <MenuItem Header="getTextureCoords" ToolTip="Block&#xd;&#xa;getTextureCoords(int id, int side, int damage)&#xd;&#xa;return: JavaArray" Click="Block_Click"/>
+                            <MenuItem Header="setColor" ToolTip="Block&#xd;&#xa;setColor(int id, array color)&#xd;&#xa;return: void" Click="Block_Click"/>
+                            <MenuItem Header="setDestroyTime" ToolTip="Block&#xd;&#xa;setDestroyTime(int id, double time)&#xd;&#xa;return:void" Click="Block_Click"/>
+                            <MenuItem Header="setExplosionResistance" ToolTip="Block&#xd;&#xa;setExplosionResistance(int id, double resistance)&#xd;&#xa;return: void" Click="Block_Click"/>
+                            <MenuItem Header="setFriction" ToolTip="Block&#xd;&#xa;setFriction(int id, double friction)&#xd;&#xa;return: void" Click="Block_Click"/>
+                            <MenuItem Header="setLightLevel" ToolTip="Block&#xd;&#xa;setLightLevel(int id, int level)&#xd;&#xa;return: void" Click="Block_Click"/>
+                            <MenuItem Header="setLightOpacity" ToolTip="Block&#xd;&#xa;setLightOpacity(int id, int darkness)&#xd;&#xa;return: void" Click="Block_Click"/>
+                            <MenuItem Header="setRedstoneConsumer" ToolTip="Block&#xd;&#xa;setRedstoneConsumer(int id, boolean bool)&#xd;&#xa;return: void" Click="Block_Click"/>
+                            <MenuItem Header="setRenderLayer" ToolTip="Block&#xd;&#xa;setRenderLayer(int id, int layer)&#xd;&#xa;return: void" Click="Block_Click"/>
+                            <MenuItem Header="setRenderType" ToolTip="Block&#xd;&#xa;setRenderType(int id, int type_id)&#xd;&#xa;return: void" Click="Block_Click"/>
+                            <MenuItem Header="setShape" ToolTip="Block&#xd;&#xa;setShape(int id, double start_x, double start_y, double start_z, double end_x, double end_y, double end_z, int damage)&#xd;&#xa;return: void" Click="Block_Click"/>
+                        </MenuItem>
+
+                        <MenuItem x:Name="mi_server" Header="Server">
+                            <MenuItem Header="getAddress" ToolTip="Server&#xd;&#xa;getAddress()&#xd;&#xa;return: string(?)" Click="Server_Click"/>
+                            <MenuItem Header="getAllPlayerNames" ToolTip="Server&#xd;&#xa;getAllPlayerNames()&#xd;&#xa;return: JavaArray" Click="Server_Click"/>
+                            <MenuItem Header="getAllPlayers" ToolTip="Server&#xd;&#xa;getAllPlayers()&#xd;&#xa;return: JavaArray" Click="Server_Click"/>
+                            <MenuItem Header="getPort" ToolTip="Server&#xd;&#xa;getPort()&#xd;&#xa;return: Number" Click="Server_Click"/>
+                            <MenuItem Header="joinServer" ToolTip="Server&#xd;&#xa;joinServer(string address, int port)&#xd;&#xa;return: void" Click="Server_Click"/>
+                            <MenuItem Header="sendChat" ToolTip="Server&#xd;&#xa;sendChat(string message)&#xd;&#xa;return: void" Click="Server_Click"/>
+                        </MenuItem>
+
+                        <MenuItem x:Name="mi_renderer" Header="Renderer">
+                            <MenuItem Header="createHumanoidRenderer" ToolTip="Renderer&#xd;&#xa;createHumanoidRenderer()&#xd;&#xa;return: JavaObject" Click="Renderer_Click"/>
+                        </MenuItem>
+
+                        <MenuItem x:Name="mi_model" Header="Model">
+                            <MenuItem Header="getPart" ToolTip="Model&#xd;&#xa;getPart(string partname)&#xd;&#xa;return: JavaObject" Click="Model_Click"/>
+                        </MenuItem>
+
+                        <MenuItem x:Name="mi_modelpart" Header="ModelPart">
+                            <MenuItem Header="clear" ToolTip="ModelPart&#xd;&#xa;clear()&#xd;&#xa;return: JavaObject" Click="ModelPart_Click"/>
+                            <MenuItem Header="setTextureOffset" ToolTip="ModelPart&#xd;&#xa;setTextureOffset(Number num1, Number num2, boolean bool)&#xd;&#xa;return: void" Click="ModelPart_Click"/>
+                            <MenuItem Header="addBox" ToolTip="ModelPart&#xd;&#xa;addBox(Number num1, Number num2, Number num3, Number num4, Number num5, Number num6)&#xd;&#xa;return: void" Click="ModelPart_Click"/>
+                            <MenuItem Header="setTextureSize" ToolTip="ModelPart&#xd;&#xa;setTextureSize(Number width, Number height)&#xd;&#xa;return: void" Click="ModelPart_Click"/>
+                            <MenuItem Header="setRotationPoint" ToolTip="ModelPart&#xd;&#xa;setRotationPoint(Number x, Number y, Number z)&#xd;&#xa;return: void" Click="ModelPart_Click"/>
+                        </MenuItem>
+                    </MenuItem>
+                </MenuItem>
+
+                <MenuItem x:Name="mi_math" Header="Math">
+                    <MenuItem x:Name="mi_math_methods" Header="Methods">
+                        <MenuItem Header="abs" ToolTip="Math&#xd;&#xa;abs(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="acos" ToolTip="Math&#xd;&#xa;acos(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="acosh" ToolTip="Math&#xd;&#xa;acosh(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="asin" ToolTip="Math&#xd;&#xa;asin(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="asinh" ToolTip="Math&#xd;&#xa;asinh(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="atan" ToolTip="Math&#xd;&#xa;atan(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="atanh" ToolTip="Math&#xd;&#xa;atanh(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="atan2" ToolTip="Math&#xd;&#xa;atan2(x, y)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="cbrt" ToolTip="Math&#xd;&#xa;cbrt(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="ceil" ToolTip="Math&#xd;&#xa;ceil(x)&#xd;&#xa;return: int" Click="Math_Click"/>
+                        <MenuItem Header="clz32" ToolTip="Math&#xd;&#xa;clz32(x)&#xd;&#xa;return: int" Click="Math_Click"/>
+                        <MenuItem Header="cos" ToolTip="Math&#xd;&#xa;cos(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="cosh" ToolTip="Math&#xd;&#xa;cosh(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="exp" ToolTip="Math&#xd;&#xa;exp(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="expm1" ToolTip="Math&#xd;&#xa;expm1(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="floor" ToolTip="Math&#xd;&#xa;floor(x)&#xd;&#xa;return: int" Click="Math_Click"/>
+                        <MenuItem Header="fround" ToolTip="Math&#xd;&#xa;fround(x)&#xd;&#xa;return: float" Click="Math_Click"/>
+                        <MenuItem Header="hypot" ToolTip="Math&#xd;&#xa;hypot([value1[, value2[, ...]]])&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="imul" ToolTip="Math&#xd;&#xa;imul(a, b)&#xd;&#xa;return: int" Click="Math_Click"/>
+                        <MenuItem Header="log" ToolTip="Math&#xd;&#xa;log(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="log10" ToolTip="Math&#xd;&#xa;log10(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="log1p" ToolTip="Math&#xd;&#xa;log1p(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="log2" ToolTip="Math&#xd;&#xa;log2(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="max" ToolTip="Math&#xd;&#xa;max([value1[, value2[, ...]]])&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="min" ToolTip="Math&#xd;&#xa;min([value1[, value2[, ...]]])&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="pow" ToolTip="Math&#xd;&#xa;pow(base, exponents)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="random" ToolTip="Math&#xd;&#xa;random()&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="round" ToolTip="Math&#xd;&#xa;round(x)&#xd;&#xa;return: int" Click="Math_Click"/>
+                        <MenuItem Header="sign" ToolTip="Math&#xd;&#xa;sign(x)&#xd;&#xa;return: int" Click="Math_Click"/>
+                        <MenuItem Header="sin" ToolTip="Math&#xd;&#xa;sin(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="sinh" ToolTip="Math&#xd;&#xa;sinh(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="sqrt" ToolTip="Math&#xd;&#xa;sqrt(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="tan" ToolTip="Math&#xd;&#xa;tan(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="tanh" ToolTip="Math&#xd;&#xa;tanh(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                        <MenuItem Header="trunc" ToolTip="Math&#xd;&#xa;trunc(x)&#xd;&#xa;return: double" Click="Math_Click"/>
+                    </MenuItem>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="編集(_E)">
+                <MenuItem Header="コピー" Click="Copy_Click"/>
+                <MenuItem Header="切り取り" Click="Cut_Click"/>
+                <MenuItem Header="貼り付け" Click="Paste_Click"/>
+                <MenuItem Header="コードのクリア" Click="Clear_Click"/>
+                <MenuItem Header="コードの全選択" Click="SelectAll_Click"/>
+            </MenuItem>
+        </Menu>
+        <AvalonEdit:TextEditor x:Name="te_code" Margin="0,45,0,0" VerticalAlignment="Top" Background="White" SyntaxHighlighting="JavaScript" ShowLineNumbers="True" FontSize="14" Text="&#x9;" KeyDown="te_code_KeyDown" KeyUp="te_code_KeyUp"/>
+    </Grid>
+</Controls:MetroWindow>

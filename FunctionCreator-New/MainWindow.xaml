@@ -1,0 +1,14 @@
+﻿<Controls:MetroWindow x:Class="FunctionCreator_New.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="MainMenu" Height="350" Width="530" BorderBrush="Aqua">
+    <Grid>
+        <Label x:Name="lb_title" Content="FunctionCreator" HorizontalAlignment="Center" VerticalAlignment="Top" Width="530" Height="98" Foreground="Orange" Background="#FF4B4BB2" FontWeight="Bold" FontSize="55" HorizontalContentAlignment="Center"/>
+        <Button x:Name="btn_new" Content="新規作成" HorizontalAlignment="Left" Margin="0,103,0,0" VerticalAlignment="Top" Width="265" Height="217" FontSize="24" FontWeight="Bold" Style="{StaticResource AccentedSquareButtonStyle}" Click="btn_new_Click"/>
+        <Button x:Name="btn_edit" Content="既存の関数の編集" HorizontalAlignment="Left" Margin="265,103,-8,0" VerticalAlignment="Top" Width="265" Height="217" FontSize="24" FontWeight="Bold" Style="{StaticResource AccentedSquareButtonStyle}" Click="btn_edit_Click"/>
+    </Grid>
+</Controls:MetroWindow>
