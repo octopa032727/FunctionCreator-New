@@ -46,6 +46,11 @@ namespace FunctionCreator_New
             te_obfuscated.Text = Obfuscate_js.Obfuscate(te_code.Text);
         }
 
+        private void btn_copy_Click(object sender, RoutedEventArgs e)
+        {
+            te_obfuscated.Copy();
+        }
+
         private void te_code_TextChanged(object sender, EventArgs e)
         {
             var tmp = (TextEditor)sender;

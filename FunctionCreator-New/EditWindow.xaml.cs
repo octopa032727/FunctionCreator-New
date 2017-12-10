@@ -185,6 +185,15 @@ namespace FunctionCreator_New
                         });
                     }
 
+                    foreach(MenuItem mathpro in mi_math_properties.Items)
+                    {
+                        data.Add(new CompletionData(mathpro.Header.ToString() == "SQRT1__2" ? $"{mi_math.Header}.SQRT1_2" : $"{mi_math.Header}.{mathpro.Header}")
+                        {
+                            Content = mathpro.Header.ToString() == "SQRT1__2" ? $"{mi_math.Header}.SQRT1_2" : $"{mi_math.Header}.{mathpro.Header}",
+                            Description = mathpro.ToolTip
+                        });
+                    }
+
                     completionwindow.Show();
                     completionwindow.Closed += delegate
                     {
@@ -220,7 +229,7 @@ namespace FunctionCreator_New
         private void ModPE_Click(object sender, RoutedEventArgs e)
         {
             var tmp = (MenuItem)sender;
-            AddFunction(mi_modpe.Header, tmp.Header);
+            AddMethod(mi_modpe.Header, tmp.Header);
 
             MoveCaret(-1);
         }
@@ -229,7 +238,7 @@ namespace FunctionCreator_New
         private void Level_Click(object sender, RoutedEventArgs e)
         {
             var tmp = (MenuItem)sender;
-            AddFunction(mi_level.Header, tmp.Header);
+            AddMethod(mi_level.Header, tmp.Header);
 
             MoveCaret(-1);
         }
@@ -238,7 +247,7 @@ namespace FunctionCreator_New
         private void Player_Click(object sender, RoutedEventArgs e)
         {
             var tmp = (MenuItem)sender;
-            AddFunction(mi_player.Header, tmp.Header);
+            AddMethod(mi_player.Header, tmp.Header);
 
             MoveCaret(-1);
         }
@@ -247,7 +256,7 @@ namespace FunctionCreator_New
         private void Entity_Click(object sender, RoutedEventArgs e)
         {
             var tmp = (MenuItem)sender;
-            AddFunction(mi_entity.Header, tmp.Header);
+            AddMethod(mi_entity.Header, tmp.Header);
 
             MoveCaret(-1);
         }
@@ -256,7 +265,7 @@ namespace FunctionCreator_New
         private void Item_Click(object sender, RoutedEventArgs e)
         {
             var tmp = (MenuItem)sender;
-            AddFunction(mi_item.Header, tmp.Header);
+            AddMethod(mi_item.Header, tmp.Header);
 
             MoveCaret(-1);
         }
@@ -265,7 +274,7 @@ namespace FunctionCreator_New
         private void Block_Click(object sender, RoutedEventArgs e)
         {
             var tmp = (MenuItem)sender;
-            AddFunction(mi_block.Header, tmp.Header);
+            AddMethod(mi_block.Header, tmp.Header);
 
             MoveCaret(-1);
         }
@@ -274,7 +283,7 @@ namespace FunctionCreator_New
         private void Server_Click(object sender, RoutedEventArgs e)
         {
             var tmp = (MenuItem)sender;
-            AddFunction(mi_server.Header, tmp.Header);
+            AddMethod(mi_server.Header, tmp.Header);
 
             MoveCaret(-1);
         }
@@ -283,7 +292,7 @@ namespace FunctionCreator_New
         private void Renderer_Click(object sender, RoutedEventArgs e)
         {
             var tmp = (MenuItem)sender;
-            AddFunction(mi_renderer.Header, tmp.Header);
+            AddMethod(mi_renderer.Header, tmp.Header);
 
             MoveCaret(-1);
         }
@@ -292,7 +301,7 @@ namespace FunctionCreator_New
         private void Model_Click(object sender, RoutedEventArgs e)
         {
             var tmp = (MenuItem)sender;
-            AddFunction(mi_model.Header, tmp.Header);
+            AddMethod(mi_model.Header, tmp.Header);
 
             MoveCaret(-1);
         }
@@ -301,16 +310,30 @@ namespace FunctionCreator_New
         private void ModelPart_Click(object sender, RoutedEventArgs e)
         {
             var tmp = (MenuItem)sender;
-            AddFunction(mi_modelpart.Header, tmp.Header);
+            AddMethod(mi_modelpart.Header, tmp.Header);
 
             MoveCaret(-1);
         }
 
-        //Math
+        //Mathのプロパティ
+        private void MathPro_Click(object sender, RoutedEventArgs e)
+        {
+            var tmp = (MenuItem)sender;
+            if (tmp.Header.ToString() != "SQRT1__2")
+            {
+                AddProperty(mi_math.Header, tmp.Header);
+            }
+            else
+            {
+                AddProperty(mi_math.Header, "SQRT1_2");
+            }
+        }
+
+        //Mathのメソッド
         private void Math_Click(object sender, RoutedEventArgs e)
         {
             var tmp = (MenuItem)sender;
-            AddFunction(mi_math.Header, tmp.Header);
+            AddMethod(mi_math.Header, tmp.Header);
 
             MoveCaret(-1);
         }
@@ -387,8 +410,9 @@ namespace FunctionCreator_New
             }
         }
 
-        //エディタへの関数挿入時に少しコードを短く(グローバルは除く)
-        private void AddFunction(object classname, object functionname) => te_code.TextArea.PerformTextInput($"{classname}.{functionname}()");
+        //エディタへのプロパティ、メソッド挿入時に少しコードを短く(グローバルは除く)
+        private void AddProperty(object classname, object propertyname) => te_code.TextArea.PerformTextInput($"{classname}.{propertyname}");
+        private void AddMethod(object classname, object methodname) => te_code.TextArea.PerformTextInput($"{classname}.{methodname}()");
 
         //キャレット移動
         private void MoveCaret(int move) => te_code.CaretOffset = te_code.SelectionStart + move;

@@ -6,17 +6,18 @@
         xmlns:AvalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="難読化" Height="300" Width="500" BorderBrush="Aqua" WindowState="Maximized">
+        Title="Obfuscate" Height="300" Width="500" BorderBrush="Aqua" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="lb_code" Content="コード" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Red" FontSize="20" FontWeight="Bold"/>
-        <Button x:Name="btn_file" Content="ファイル選択" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Top" Width="77" Click="btn_file_Click"/>
-        <Button x:Name="btn_obfuscate" Content="難読化" HorizontalAlignment="Left" Margin="152,-1,0,0" VerticalAlignment="Top" Width="75" Click="btn_obfuscate_Click"/>
+        <Button x:Name="btn_file" Content="ファイル選択" HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Top" Width="77" Background="DarkBlue" Click="btn_file_Click"/>
+        <Button x:Name="btn_obfuscate" Content="難読化" HorizontalAlignment="Left" Margin="152,-1,0,0" VerticalAlignment="Top" Width="75" Background="DarkBlue" Click="btn_obfuscate_Click"/>
         <AvalonEdit:TextEditor x:Name="te_code" HorizontalAlignment="Stretch" Height="Auto" Margin="0,40,5,0" Text="function newLevel(){&#xd;&#xa;&#x9;clientMessage(&#x22;Hello,World!!&#x22;);&#xd;&#xa;}" VerticalAlignment="Stretch" Width="Auto" ShowLineNumbers="True" SyntaxHighlighting="JavaScript" Background="White" FontSize="14" TextChanged="te_code_TextChanged" Grid.Column="0"/>
         <Label x:Name="lb_obfuscated" Content="難読化後" Grid.Column="1" HorizontalAlignment="Left" Margin="0,-2,0,0" VerticalAlignment="Top" Foreground="Red" FontSize="20" FontWeight="Bold"/>
         <AvalonEdit:TextEditor x:Name="te_obfuscated" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="5,40,0,0" ShowLineNumbers="True" SyntaxHighlighting="JavaScript" Background="White"/>
+        <Button x:Name="btn_copy" Content="コピー" Grid.Column="1" HorizontalAlignment="Left" Margin="170,0,0,0" VerticalAlignment="Top" Width="75" Background="DarkBlue" Click="btn_copy_Click"/>
     </Grid>
 </Controls:MetroWindow>

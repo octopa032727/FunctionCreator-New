@@ -310,6 +310,16 @@
                 </MenuItem>
 
                 <MenuItem x:Name="mi_math" Header="Math">
+                    <MenuItem x:Name="mi_math_properties" Header="Properties">
+                        <MenuItem Header="E" ToolTip="Math&#xd;&#xa;E&#xd;&#xa;value: 2.718281828459045" Click="MathPro_Click"/>
+                        <MenuItem Header="LN2" ToolTip="Math&#xd;&#xa;LN2&#xd;&#xa;value: 0.6931471805599453" Click="MathPro_Click"/>
+                        <MenuItem Header="LN10" ToolTip="Math&#xd;&#xa;LN10&#xd;&#xa;value: 2.302585092994046" Click="MathPro_Click"/>
+                        <MenuItem Header="LOG2E" ToolTip="Math&#xd;&#xa;LOG2E&#xd;&#xa;value: 1.4426950408889634" Click="MathPro_Click"/>
+                        <MenuItem Header="LOG10E" ToolTip="Math&#xd;&#xa;LOG10E&#xd;&#xa;value: 0.434294481903251" Click="MathPro_Click"/>
+                        <MenuItem Header="PI" ToolTip="Math&#xd;&#xa;PI&#xd;&#xa;value: 3.141592653589793" Click="MathPro_Click"/>
+                        <MenuItem Header="SQRT1__2" ToolTip="Math&#xd;&#xa;SQRT1_2&#xd;&#xa;value: 0.7071067811865476" Click="MathPro_Click"/>
+                        <MenuItem Header="SQRT2" ToolTip="Math&#xd;&#xa;SQRT2&#xd;&#xa;value: 1.4142135623730951" Click="MathPro_Click"/>
+                    </MenuItem>
                     <MenuItem x:Name="mi_math_methods" Header="Methods">
                         <MenuItem Header="abs" ToolTip="Math&#xd;&#xa;abs(x)&#xd;&#xa;return: double" Click="Math_Click"/>
                         <MenuItem Header="acos" ToolTip="Math&#xd;&#xa;acos(x)&#xd;&#xa;return: double" Click="Math_Click"/>
