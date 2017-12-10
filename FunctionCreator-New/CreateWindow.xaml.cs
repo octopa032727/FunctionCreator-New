@@ -46,9 +46,13 @@ namespace FunctionCreator_New
         private void CheckEmpty()
         {
             if (tb_funcname.Text != string.Empty && tb_args.Text != string.Empty)
+            {
                 btn_next.IsEnabled = true;
+            }
             else
+            {
                 btn_next.IsEnabled = false;
+            }
         }
     }
 }

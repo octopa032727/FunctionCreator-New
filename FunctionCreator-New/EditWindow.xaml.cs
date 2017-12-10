@@ -346,6 +346,11 @@ namespace FunctionCreator_New
                         MoveCaret(-1);
 
                         break;
+                    case Key.D7:
+                        te_code.TextArea.PerformTextInput("'");
+                        MoveCaret(-1);
+
+                        break;
                     case Key.D8:
                         te_code.TextArea.PerformTextInput(")");
                         MoveCaret(-1);
@@ -358,6 +363,17 @@ namespace FunctionCreator_New
                         break;
                 }
             }
+
+            switch (e.Key)
+            {
+                case Key.OemOpenBrackets:
+                    te_code.TextArea.PerformTextInput("]");
+                    MoveCaret(-1);
+
+                    break;
+            }
+
+            //MessageBox.Show(e.Key.ToString());
         }
 
         private void te_code_KeyUp(object sender, KeyEventArgs e)

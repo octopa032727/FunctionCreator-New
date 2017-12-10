@@ -11,31 +11,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ICSharpCode.AvalonEdit;
 using MahApps.Metro.Controls;
 
 namespace FunctionCreator_New
 {
     /// <summary>
-    /// MainWindow.xaml の相互作用ロジック
+    /// ObfuscateWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class ObfuscateWindow : MetroWindow
     {
-        public MainWindow()
+        public ObfuscateWindow()
         {
             InitializeComponent();
         }
 
-        private void btn_new_Click(object sender, RoutedEventArgs e)
-        {
-            var createwindow = new CreateWindow();
-            createwindow.Show();
-
-            Close();
-        }
-
-        private void btn_edit_Click(object sender, RoutedEventArgs e)
+        private void btn_file_Click(object sender, RoutedEventArgs e)
         {
             var openfiledialog = new OpenFileDialog();
             openfiledialog.Filter = "JavaScriptファイル(*.js)|*.js";
@@ -43,22 +35,29 @@ namespace FunctionCreator_New
 
             if (result)
             {
-                var editwindow = new EditWindow();
-                editwindow.mi_overwrite.IsEnabled = true;
-                editwindow.te_code.Load(openfiledialog.FileName);
-                editwindow.Title = $"Edit: {openfiledialog.FileName}";
-                editwindow.Show();
+                te_code.Load(openfiledialog.FileName);
 
-                Close();
+                te_obfuscated.Text = Obfuscate_js.Obfuscate(te_code.Text);
             }
         }
 
         private void btn_obfuscate_Click(object sender, RoutedEventArgs e)
         {
-            var obfuscatewindow = new ObfuscateWindow();
-            obfuscatewindow.Show();
+            te_obfuscated.Text = Obfuscate_js.Obfuscate(te_code.Text);
+        }
 
-            Close();
+        private void te_code_TextChanged(object sender, EventArgs e)
+        {
+            var tmp = (TextEditor)sender;
+
+            if (tmp.Text != string.Empty)
+            {
+                btn_obfuscate.IsEnabled = true;
+            }
+            else
+            {
+                btn_obfuscate.IsEnabled = false;
+            }
         }
     }
 }

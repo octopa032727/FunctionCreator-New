@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Create" Height="330" Width="300" BorderBrush="Aqua">
+        Title="Create" Height="330" Width="300" BorderBrush="Aqua" WindowState="Maximized">
     <Grid>
-        <Label x:Name="lb_title" Content="Option" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Orange" Height="106" Width="300" Background="#FF4B4BB2" FontSize="55" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <Label x:Name="lb_funcname" Content="関数名: " HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Foreground="Red" FontSize="16" FontWeight="Bold"/>
-        <TextBox x:Name="tb_funcname" HorizontalAlignment="Left" Height="23" Margin="80,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Controls:TextBoxHelper.Watermark="hoge" Controls:TextBoxHelper.ClearTextButton="True" TextChanged="tb_funcname_TextChanged"/>
-        <Label x:Name="lb_args" Content="引数一覧 ※改行区切りで入力" HorizontalAlignment="Left" Margin="0,145,0,0" VerticalAlignment="Top" Foreground="Red" FontSize="16" FontWeight="Bold"/>
-        <TextBox x:Name="tb_args" HorizontalAlignment="Left" Height="81" Margin="10,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True" Controls:TextBoxHelper.Watermark="arg1" Controls:TextBoxHelper.ClearTextButton="True" TextChanged="tb_args_TextChanged"/>
-        <Button x:Name="btn_next" Content="次へ" HorizontalAlignment="Left" Margin="207,273,0,0" VerticalAlignment="Top" Width="75" Background="Orange" IsEnabled="False" Click="btn_next_Click"/>
+        <Label x:Name="lb_title" Content="Option" HorizontalAlignment="Stretch" VerticalAlignment="Top" Foreground="Orange" Height="106" Background="#FF4B4BB2" FontSize="55" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+        <Label x:Name="lb_funcname" Content="関数名: " HorizontalAlignment="Left" Margin="0,111,0,0" VerticalAlignment="Top" Foreground="Red" FontSize="20" FontWeight="Bold"/>
+        <TextBox x:Name="tb_funcname" HorizontalAlignment="Stretch" Height="23" Margin="80,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Controls:TextBoxHelper.Watermark="hoge" Controls:TextBoxHelper.ClearTextButton="True" TextChanged="tb_funcname_TextChanged"/>
+        <Label x:Name="lb_args" Content="引数一覧 ※改行区切りで入力" HorizontalAlignment="Left" Margin="0,145,0,0" VerticalAlignment="Top" Foreground="Red" FontSize="20" FontWeight="Bold"/>
+        <TextBox x:Name="tb_args" HorizontalAlignment="Stretch" Height="81" Margin="10,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True" Controls:TextBoxHelper.Watermark="arg1" Controls:TextBoxHelper.ClearTextButton="True" TextChanged="tb_args_TextChanged"/>
+        <Button x:Name="btn_next" Content="次へ" HorizontalAlignment="Right" Margin="0,273,0,0" VerticalAlignment="Top" Width="75" Background="Orange" IsEnabled="False" Click="btn_next_Click"/>
     </Grid>
 </Controls:MetroWindow>
