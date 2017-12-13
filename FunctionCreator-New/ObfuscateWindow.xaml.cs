@@ -51,6 +51,14 @@ namespace FunctionCreator_New
             te_obfuscated.Copy();
         }
 
+        private void btn_back_Click(object sender, RoutedEventArgs e)
+        {
+            var mainwindow = new MainWindow();
+            mainwindow.Show();
+
+            Close();
+        }
+
         private void te_code_TextChanged(object sender, EventArgs e)
         {
             var tmp = (TextEditor)sender;

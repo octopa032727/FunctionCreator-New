@@ -44,8 +44,10 @@ namespace FunctionCreator_New
             if (result)
             {
                 var editwindow = new EditWindow();
+                editwindow.mode = false;
                 editwindow.mi_overwrite.IsEnabled = true;
                 editwindow.te_code.Load(openfiledialog.FileName);
+                editwindow.beforecode = editwindow.te_code.Text;
                 editwindow.Title = $"Edit: {openfiledialog.FileName}";
                 editwindow.Show();
 

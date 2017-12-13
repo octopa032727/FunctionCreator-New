@@ -17,6 +17,7 @@ using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.CodeCompletion;
 using ICSharpCode.AvalonEdit.Search;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace FunctionCreator_New
 {
@@ -25,11 +26,12 @@ namespace FunctionCreator_New
     /// </summary>
     public partial class EditWindow : MetroWindow
     {
-        //入力補完ウィンドウ
-        private CompletionWindow completionwindow;
+        private CompletionWindow completionwindow; //入力補完ウィンドウ
         public string funcname;
         public string[] args;
         public string filename;
+        public string beforecode;
+        public bool mode;
 
         public EditWindow()
         {
@@ -357,6 +359,20 @@ namespace FunctionCreator_New
         //全選択
         private void SelectAll_Click(object sender, RoutedEventArgs e) => te_code.SelectAll();
 
+        //戻る
+        private async void btn_back_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if (beforecode == te_code.Text)
+            {
+                JudgeMode();
+            }
+            else
+            {
+                if (await this.ShowMessageAsync("確認", "編集中です。\n本当に戻りますか?") == MessageDialogResult.Affirmative) JudgeMode();
+            }
+        }
+
         private void te_code_KeyDown(object sender, KeyEventArgs e)
         {
             //自動入力 & キャレット
@@ -416,5 +432,22 @@ namespace FunctionCreator_New
 
         //キャレット移動
         private void MoveCaret(int move) => te_code.CaretOffset = te_code.SelectionStart + move;
+
+        //mode true:新規作成時 false:編集時
+        private void JudgeMode()
+        {
+            if (mode)
+            {
+                var createwindow = new CreateWindow();
+                createwindow.Show();
+            }
+            else
+            {
+                var mainwindow = new MainWindow();
+                mainwindow.Show();
+            }
+
+            Close();
+        }
     }
 }

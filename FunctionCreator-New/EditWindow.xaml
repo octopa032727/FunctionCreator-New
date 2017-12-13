@@ -7,6 +7,11 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Edit" Height="400" Width="500" BorderBrush="Aqua" WindowState="Maximized">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="btn_back" Content="戻る" Click="btn_back_Click"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
     <Grid>
         <Menu x:Name="menu_tools" HorizontalAlignment="Stretch" Height="40" VerticalAlignment="Top">
             <MenuItem Header="ファイル(_F)">

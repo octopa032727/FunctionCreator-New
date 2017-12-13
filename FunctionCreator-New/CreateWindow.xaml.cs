@@ -33,11 +33,21 @@ namespace FunctionCreator_New
         {
             var editwindow = new EditWindow();
 
+            editwindow.mode = true;
+            editwindow.beforecode = "\t";
             editwindow.funcname = tb_funcname.Text;
             editwindow.args = tb_args.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
             //関数の情報を出力できるようにする
             editwindow.menu_tools.ToolTip = $"関数名: {editwindow.funcname}\n引数リスト: {string.Join(",", editwindow.args)}";
             editwindow.Show();
+
+            Close();
+        }
+
+        private void btn_back_Click(object sender, RoutedEventArgs e)
+        {
+            var mainwindow = new MainWindow();
+            mainwindow.Show();
 
             Close();
         }
