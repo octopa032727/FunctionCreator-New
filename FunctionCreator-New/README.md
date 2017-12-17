@@ -2,7 +2,7 @@
 Minecraft Bedrock EditionのスクリプトModの関数作成用ツールです。
 
 ダウンロードリンク(DropBox)
-[FunctionCreator](https://www.dropbox.com/s/wq73aks0dx6v93x/FunctionCreator.exe?dl=0)
+[FunctionCreator](https://www.dropbox.com/s/bm7u34vcrohbasn/FunctionCreator.exe?dl=0)
 
 - 機能
 	- 関数作成サポート
