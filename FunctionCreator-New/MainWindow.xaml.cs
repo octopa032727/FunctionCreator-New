@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace FunctionCreator_New
 {
@@ -22,6 +25,8 @@ namespace FunctionCreator_New
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        public static readonly string filepath = @"FunctionCreator-data\backimage.txt";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,7 +40,7 @@ namespace FunctionCreator_New
             Close();
         }
 
-        private void btn_edit_Click(object sender, RoutedEventArgs e)
+        private async void btn_edit_Click(object sender, RoutedEventArgs e)
         {
             var openfiledialog = new OpenFileDialog();
             openfiledialog.Filter = "JavaScriptファイル(*.js)|*.js";
@@ -43,7 +48,22 @@ namespace FunctionCreator_New
 
             if (result)
             {
+                var progress = await this.ShowProgressAsync("読み込み中", "しばらくお待ちください...");
+
                 var editwindow = new EditWindow();
+
+                if (File.Exists(filepath))
+                {
+                    var imagebrush = new ImageBrush(await GetImage(new Uri(File.ReadAllText(filepath))));
+                    progress.SetProgress(0.5);
+                    imagebrush.Opacity = 0.8;
+
+                    editwindow.te_code.Background = imagebrush;
+                }
+                progress.SetProgress(1);
+                await progress.CloseAsync();
+
+                editwindow.filename = openfiledialog.FileName;
                 editwindow.mode = false;
                 editwindow.mi_overwrite.IsEnabled = true;
                 editwindow.te_code.Load(openfiledialog.FileName);
@@ -55,12 +75,74 @@ namespace FunctionCreator_New
             }
         }
 
-        private void btn_obfuscate_Click(object sender, RoutedEventArgs e)
+        private async void btn_obfuscate_Click(object sender, RoutedEventArgs e)
         {
+            var progress = await this.ShowProgressAsync("読み込み中", "しばらくお待ちください...");
+
             var obfuscatewindow = new ObfuscateWindow();
+
+            if (File.Exists(filepath))
+            {
+                var imagebrush = new ImageBrush(await GetImage(new Uri(File.ReadAllText(filepath))));
+                progress.SetProgress(0.5);
+                imagebrush.Opacity = 0.8;
+
+                obfuscatewindow.te_code.Background = imagebrush;
+                obfuscatewindow.te_obfuscated.Background = imagebrush;
+            }
+            progress.SetProgress(1);
+            await progress.CloseAsync();
+
             obfuscatewindow.Show();
 
             Close();
+        }
+
+        private async void btn_changeback_Click(object sender, RoutedEventArgs e)
+        {
+            var progress = await this.ShowProgressAsync("読み込み中", "しばらくお待ちください...");
+
+            var changebackgroundwindow = new ChangeBackgroundWindow();
+
+            if (File.Exists(filepath))
+            {
+                var imagebrush = new ImageBrush(await GetImage(new Uri(File.ReadAllText(filepath))));
+                progress.SetProgress(0.5);
+                imagebrush.Opacity = 0.8;
+
+                changebackgroundwindow.te_image.Background = imagebrush;
+            }
+            progress.SetProgress(1);
+            await progress.CloseAsync();
+
+            changebackgroundwindow.Show();
+
+            Close();
+        }
+
+        //画像をダウンロード(非同期)
+        public static Task<BitmapImage> GetImage(Uri uri)
+        {
+            return Task.Run(() =>
+            {
+                var client = new WebClient();
+                try
+                {
+                    var image = new BitmapImage();
+                    image.BeginInit();
+                    image.StreamSource = new MemoryStream(client.DownloadData(uri));
+                    image.EndInit();
+                    image.Freeze();
+                    return image;
+                }
+                catch (Exception) { }
+                finally
+                {
+                    client.Dispose();
+                }
+
+                return null;
+            });
         }
     }
 }

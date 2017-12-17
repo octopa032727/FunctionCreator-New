@@ -15,7 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.CodeCompletion;
-using ICSharpCode.AvalonEdit.Search;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
@@ -38,7 +37,6 @@ namespace FunctionCreator_New
             InitializeComponent();
 
             var options = new TextEditorOptions();
-            options.ShowEndOfLine = true;
             options.ShowColumnRuler = true;
 
             te_code.TextArea.Options = options;
@@ -67,7 +65,16 @@ namespace FunctionCreator_New
         }
 
         //上書き
-        private void Overwrite_Click(object sender, RoutedEventArgs e) => te_code.Save(filename);
+        private void Overwrite_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                te_code.Save(filename);
+            }catch(Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
+        }
 
         private void te_code_TextEntered(object sender, TextCompositionEventArgs e)
         {
@@ -403,13 +410,16 @@ namespace FunctionCreator_New
                 }
             }
 
-            switch (e.Key)
+            if (Keyboard.Modifiers == ModifierKeys.None)
             {
-                case Key.OemOpenBrackets:
-                    te_code.TextArea.PerformTextInput("]");
-                    MoveCaret(-1);
+                switch (e.Key)
+                {
+                    case Key.OemOpenBrackets:
+                        te_code.TextArea.PerformTextInput("]");
+                        MoveCaret(-1);
 
-                    break;
+                        break;
+                }
             }
 
             //MessageBox.Show(e.Key.ToString());

@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ICSharpCode.AvalonEdit;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace FunctionCreator_New
 {
@@ -27,7 +28,7 @@ namespace FunctionCreator_New
             InitializeComponent();
         }
 
-        private void btn_file_Click(object sender, RoutedEventArgs e)
+        private async void btn_file_Click(object sender, RoutedEventArgs e)
         {
             var openfiledialog = new OpenFileDialog();
             openfiledialog.Filter = "JavaScriptファイル(*.js)|*.js";
@@ -35,15 +36,19 @@ namespace FunctionCreator_New
 
             if (result)
             {
+                var progress = await this.ShowProgressAsync("読み込み中", "しばらくお待ちください...");
                 te_code.Load(openfiledialog.FileName);
 
-                te_obfuscated.Text = Obfuscate_js.Obfuscate(te_code.Text);
+                await progress.CloseAsync();
             }
         }
 
-        private void btn_obfuscate_Click(object sender, RoutedEventArgs e)
+        private async void btn_obfuscate_Click(object sender, RoutedEventArgs e)
         {
-            te_obfuscated.Text = Obfuscate_js.Obfuscate(te_code.Text);
+            var progress = await this.ShowProgressAsync("難読化中", "しばらくお待ちください...");
+            te_obfuscated.Text = await Obfuscate_js.ObfuscateAsync(te_code.Text);
+
+            await progress.CloseAsync();
         }
 
         private void btn_copy_Click(object sender, RoutedEventArgs e)

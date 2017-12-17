@@ -11,5 +11,6 @@
         <Button x:Name="btn_new" Content="新規作成" FontSize="24" FontWeight="Bold" Style="{StaticResource AccentedSquareButtonStyle}" Click="btn_new_Click"/>
         <Button x:Name="btn_edit" Content="既存の関数の編集" FontSize="24" FontWeight="Bold" Style="{StaticResource AccentedSquareButtonStyle}" Click="btn_edit_Click"/>
         <Button x:Name="btn_obfuscate" Content="難読化" FontSize="24" FontWeight="Bold" Style="{StaticResource AccentedSquareButtonStyle}" Click="btn_obfuscate_Click"/>
+        <Button x:Name="btn_changeback" Content="エディタのバックグラウンド" FontSize="24" FontWeight="Bold" Style="{StaticResource AccentedSquareButtonStyle}" Click="btn_changeback_Click"/>
     </StackPanel>
 </Controls:MetroWindow>

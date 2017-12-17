@@ -16,7 +16,7 @@
         <Label x:Name="lb_funcname" Content="関数名: " HorizontalAlignment="Left" Margin="0,111,0,0" VerticalAlignment="Top" Foreground="Red" FontSize="20" FontWeight="Bold"/>
         <TextBox x:Name="tb_funcname" HorizontalAlignment="Stretch" Height="23" Margin="80,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Controls:TextBoxHelper.Watermark="hoge" Controls:TextBoxHelper.ClearTextButton="True" TextChanged="tb_funcname_TextChanged"/>
         <Label x:Name="lb_args" Content="引数一覧 ※改行区切りで入力" HorizontalAlignment="Left" Margin="0,145,0,0" VerticalAlignment="Top" Foreground="Red" FontSize="20" FontWeight="Bold"/>
-        <TextBox x:Name="tb_args" HorizontalAlignment="Stretch" Height="81" Margin="10,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True" Controls:TextBoxHelper.Watermark="arg1" Controls:TextBoxHelper.ClearTextButton="True" TextChanged="tb_args_TextChanged"/>
-        <Button x:Name="btn_next" Content="次へ" HorizontalAlignment="Right" Margin="0,273,0,0" VerticalAlignment="Top" Width="75" Background="Orange" IsEnabled="False" Click="btn_next_Click"/>
+        <TextBox x:Name="tb_args" HorizontalAlignment="Stretch" Height="81" Margin="10,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True" Controls:TextBoxHelper.Watermark="引数なしの場合は改行のみ入力" Controls:TextBoxHelper.ClearTextButton="True" TextChanged="tb_args_TextChanged"/>
+        <Button x:Name="btn_next" Content="次へ" HorizontalAlignment="Right" Margin="0,273,0,0" VerticalAlignment="Top" Width="75" Background="DarkBlue" IsEnabled="False" Click="btn_next_Click"/>
     </Grid>
 </Controls:MetroWindow>

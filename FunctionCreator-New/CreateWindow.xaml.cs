@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace FunctionCreator_New
 {
@@ -29,9 +31,28 @@ namespace FunctionCreator_New
 
         private void tb_args_TextChanged(object sender, TextChangedEventArgs e) => CheckEmpty();
 
-        private void btn_next_Click(object sender, RoutedEventArgs e)
+        private async void btn_next_Click(object sender, RoutedEventArgs e)
         {
+            var progress = await this.ShowProgressAsync("読み込み中", "しばらくお待ちください...");
+
             var editwindow = new EditWindow();
+
+            try
+            {
+                if (File.Exists(MainWindow.filepath))
+                {
+                    var imagebrush = new ImageBrush(await MainWindow.GetImage(new Uri(File.ReadAllText(MainWindow.filepath))));
+                    progress.SetProgress(0.5);
+                    imagebrush.Opacity = 0.8;
+
+                    editwindow.te_code.Background = imagebrush;
+                }
+            }catch(Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
+            progress.SetProgress(1);
+            await progress.CloseAsync();
 
             editwindow.mode = true;
             editwindow.beforecode = "\t";
