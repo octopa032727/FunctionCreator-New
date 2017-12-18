@@ -1,8 +1,8 @@
-﻿# FunctionCreator
+# FunctionCreator
 Minecraft Bedrock EditionのスクリプトModの関数作成用ツールです。
 
-ダウンロードリンク(DropBox)
-[FunctionCreator](https://www.dropbox.com/s/bm7u34vcrohbasn/FunctionCreator.exe?dl=0)
+ダウンロードリンク(Zip形式。解凍して中身のFunctionCreator-New.exeを実行してください。)<br>
+[FunctionCreator](https://www.dropbox.com/s/bm8bsuy2ccco7ux/FunctionCreator.zip?dl=0)
 
 - 機能
 	- 関数作成サポート
